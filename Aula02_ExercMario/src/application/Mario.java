@@ -10,73 +10,78 @@ public class Mario {
 	private boolean rapido;
 
 	public Mario(String nome, int idade, double altura) {
-		setNome(nome);
-		this.setIdade(idade);
-		this.setAltura(altura);
+		this.nome = nome;
+		this.idade = idade;
+		this.altura = altura;
 		this.estamina = 100;
 		this.crescer = false;
 		this.rapido = false;
 	}
 
-	public void setNome(String n) {
-		this.nome = n;
+	public void perderEstamina() {
+		estamina -= 10;
+		if(estamina < 0) {
+			estamina = 0;
+		}
+	}
+	
+	public void ganhaEstamina() {
+		estamina += 5;
+		if(estamina > 100) {
+			estamina = 100;
+		}
+	}
+	
+	public void crescer() {
+		altura = altura * 2;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getNome() {
 		return this.nome;
 	}
 
-	public void setIdade(int i) {
-		this.idade = i;
+	public void setIdade(int idade) {
+		this.idade = idade;
 	}
 
 	public int getIdade() {
 		return this.idade;
 	}
 
-	public void setAltura(double a) {
-		this.altura = a;
+	public void setAltura(double altura) {
+		this.altura = altura;
 	}
 
 	public double getAltura() {
 		return this.altura;
 	}
 
-	public void setEstamina(int e) {
-		this.estamina = 50;
+	public void setEstamina(int estamina) {
+		this.estamina = estamina;
 	}
 
 	public int getEstamina() {
 		return this.estamina;
 	}
 
-	public void setCrescer(boolean c) {
-		this.crescer = c;
+	public void setCrescer(boolean crescer) {
+		this.crescer = crescer;
 	}
 
 	public boolean getCrescer() {
 		return this.crescer;
 	}
 
-	public void setRapido(boolean r) {
-		this.rapido = r;
+	public void setRapido(boolean rapido) {
+		this.rapido = rapido;
 	}
 
 	public boolean getRapido() {
 		return this.rapido;
-	}
-
-	void imprimePoderes() {
-		if (crescer || rapido) {
-			if (!!crescer) {
-				System.out.println("Mário está grande!");
-			}
-			if (!!rapido) {
-				System.out.println("Mário está rápido!");
-			}
-		} else {
-			System.out.println("Mário não está com poderes ativos!");
-		}
 	}
 
 	void imprimeCaracteristicas() {
