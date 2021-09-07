@@ -3,89 +3,67 @@ package application;
 public class Mario {
 
 	private String nome;
-	private int idade = 0;
-	private double altura = 0.0;
-	private int estamina = 0;
-	private boolean crescer;
-	private boolean rapido;
+	private int idade;
+	private double altura;
+	private int estamina;
+	private int moedas;
+	private int vidas;
 
-	public Mario(String nome, int idade, double altura) {
-		this.nome = nome;
-		this.idade = idade;
-		this.altura = altura;
+	public Mario() {
+		this.nome = "Mario";
+		this.idade = 40;
+		this.altura = 1.5;
 		this.estamina = 100;
-		this.crescer = false;
-		this.rapido = false;
+		this.moedas = 0;
+		this.vidas = 1;
 	}
 
 	public void perderEstamina() {
-		estamina -= 10;
-		if(estamina < 0) {
-			estamina = 0;
+		this.estamina -= 10;
+		if (this.estamina < 0) {
+			this.estamina = 0;
 		}
 	}
-	
-	public void ganhaEstamina() {
-		estamina += 5;
-		if(estamina > 100) {
-			estamina = 100;
+
+	public void ganharEstamina() {
+		this.estamina += 5;
+		if (this.estamina > 100) {
+			this.estamina = 100;
 		}
 	}
-	
+
 	public void crescer() {
-		altura = altura * 2;
-	}
-	
-	public void setNome(String nome) {
-		this.nome = nome;
+		this.altura = this.altura * 2;
 	}
 
-	public String getNome() {
-		return this.nome;
+	public void revigorar() {
+		this.estamina = 100;
 	}
 
-	public void setIdade(int idade) {
-		this.idade = idade;
+	public void morrer() {
+		this.estamina = 0;
+		this.vidas -= 1;
+		if (this.vidas < 0) {
+			this.vidas = 0;
+		} else if (this.vidas > 0) {
+			revigorar();
+		}
 	}
 
-	public int getIdade() {
-		return this.idade;
-	}
-
-	public void setAltura(double altura) {
-		this.altura = altura;
-	}
-
-	public double getAltura() {
-		return this.altura;
-	}
-
-	public void setEstamina(int estamina) {
-		this.estamina = estamina;
-	}
-
-	public int getEstamina() {
-		return this.estamina;
-	}
-
-	public void setCrescer(boolean crescer) {
-		this.crescer = crescer;
-	}
-
-	public boolean getCrescer() {
-		return this.crescer;
-	}
-
-	public void setRapido(boolean rapido) {
-		this.rapido = rapido;
-	}
-
-	public boolean getRapido() {
-		return this.rapido;
+	public void coletarMoeda() {
+		this.moedas += 1;
+		if (this.moedas % 10 == 0) {
+			this.vidas += 1;
+		}
 	}
 
 	void imprimeCaracteristicas() {
-		System.out.println("Nome: " + getNome() + "\nEstamina: " + getEstamina() + "% " + "\nIdade: " + getIdade()
-				+ "\nAltura: " + getAltura());
+		System.out.println(
+				"Nome: " + this.nome 
+				+ "\nEstamina: " + this.estamina + "% " 
+				+ "\nIdade: " + this.idade 
+				+ "\nAltura: " + this.altura
+				+ "\nMoedas: " + this.moedas
+				+ "\nVidas: " + this.vidas);
 	}
 }
