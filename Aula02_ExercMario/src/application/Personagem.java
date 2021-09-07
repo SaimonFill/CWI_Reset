@@ -1,6 +1,6 @@
 package application;
 
-public class Mario {
+public class Personagem {
 
 	private String nome;
 	private int idade;
@@ -9,17 +9,26 @@ public class Mario {
 	private int moedas;
 	private int vidas;
 
-	public Mario() {
-		this.nome = "Mario";
-		this.idade = 40;
-		this.altura = 1.5;
-		this.estamina = 100;
-		this.moedas = 0;
-		this.vidas = 1;
+	public Personagem(String nome, int idade, double altura) {
+        this.nome = nome;
+        this.altura = altura;
+        this.idade = idade;
+        this.estamina = 100;
+        this.moedas = 0;
+        this.vidas = 1;
+    }
+	
+	public void saltar() {
+		if (this.nome.equals("Mario")) {
+			System.out.println("Saltou " + this.altura / 2);
+		} else if (this.nome.equals("Luigi")) {
+			System.out.println("Saltou " + this.altura * 2);
+		}
 	}
 
 	public void perderEstamina() {
 		this.estamina -= 10;
+		
 		if (this.estamina < 0) {
 			this.estamina = 0;
 		}
@@ -43,6 +52,7 @@ public class Mario {
 	public void morrer() {
 		this.estamina = 0;
 		this.vidas -= 1;
+		
 		if (this.vidas < 0) {
 			this.vidas = 0;
 		} else if (this.vidas > 0) {
@@ -52,18 +62,14 @@ public class Mario {
 
 	public void coletarMoeda() {
 		this.moedas += 1;
+		
 		if (this.moedas % 10 == 0) {
 			this.vidas += 1;
 		}
 	}
 
 	void imprimeCaracteristicas() {
-		System.out.println(
-				"Nome: " + this.nome 
-				+ "\nEstamina: " + this.estamina + "% " 
-				+ "\nIdade: " + this.idade 
-				+ "\nAltura: " + this.altura
-				+ "\nMoedas: " + this.moedas
-				+ "\nVidas: " + this.vidas);
+		System.out.println("Nome: " + this.nome + "\nEstamina: " + this.estamina + "% " + "\nIdade: " + this.idade
+				+ "\nAltura: " + this.altura + "\nMoedas: " + this.moedas + "\nVidas: " + this.vidas);
 	}
 }
