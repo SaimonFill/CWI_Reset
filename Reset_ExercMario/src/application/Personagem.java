@@ -72,4 +72,8 @@ public class Personagem {
 		System.out.println("Nome: " + this.nome + "\nEstamina: " + this.estamina + "% " + "\nIdade: " + this.idade
 				+ "\nAltura: " + this.altura + "\nMoedas: " + this.moedas + "\nVidas: " + this.vidas);
 	}
+	
+	public String getNome() {
+		return this.nome;
+	}
 }
