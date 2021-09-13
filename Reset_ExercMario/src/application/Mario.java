@@ -12,6 +12,11 @@ public class Mario extends Personagem {
 		this.yoshi = yoshi;
 	}
 
+	@Override
+	public void crescer() {
+		this.altura = this.altura * 1.5;
+	}
+	
 	public void montadoYoshi() {
 		if (yoshi != null) {
 			System.out.println("Mario está montado no Yoshi!");

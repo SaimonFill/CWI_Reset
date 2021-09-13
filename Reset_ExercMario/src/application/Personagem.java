@@ -4,7 +4,7 @@ public abstract class Personagem {
 
 	private String nome;
 	private int idade;
-	private double altura;
+	protected double altura;
 	private int estamina;
 	private int moedas;
 	private int vidas;
@@ -19,11 +19,11 @@ public abstract class Personagem {
 	}
 
 	public void saltar() {
-		if (this.nome.equals("Mario")) {
-			System.out.println("Saltou " + this.altura / 2);
-		} else if (this.nome.equals("Luigi")) {
-			System.out.println("Saltou " + this.altura * 2);
-		}
+		System.out.println(getNome() + " pulou " + this.altura * 0.5);
+	}
+	
+	public void saltar(double alturaObstaculo) {
+		System.out.println("Obstaculo: " + alturaObstaculo + "\n " + this.nome + "pulou " + alturaObstaculo * 1.5);
 	}
 
 	public void perderEstamina() {
@@ -41,9 +41,7 @@ public abstract class Personagem {
 		}
 	}
 
-	public void crescer() {
-		this.altura = this.altura * 2;
-	}
+	public abstract void crescer();
 
 	public void revigorar() {
 		this.estamina = 100;

@@ -26,5 +26,10 @@ public class Yoshi extends Personagem {
 			this.velocidade = this.velocidade * 2;
 		}
 	}
+	
+	@Override
+	public void crescer() {
+		this.altura = this.altura * 1.1;
+	}
 
 }
